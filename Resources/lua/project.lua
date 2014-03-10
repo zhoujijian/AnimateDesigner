@@ -1,0 +1,3 @@
+png = {
+    "number.png"
+}

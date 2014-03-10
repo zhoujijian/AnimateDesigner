@@ -1,0 +1,6 @@
+这款编辑器是采用wxWidget + cocos2dx-2.0.3的方案来实现的。目前只提供windows版本，采用VisualStudio编译。
+以下是编译流程：
+1)下载wxWidget源码并编译；
+2)下载cocos2dx-2.0.3引擎并编译；
+3)将win32文件夹中的CCEGLView.h/cpp替换到cocos2dx/platform/win32下，这部分为了与wxWidget整合做了一点修改；
+4)将本项目拷贝到cocos2dx目录的samples下，配置好头文件包含路径和库的链接路径，即可正常运行了。

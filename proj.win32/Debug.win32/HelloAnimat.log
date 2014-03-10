@@ -1,0 +1,62 @@
+﻿Build started 2014/3/9 20:02:56.
+     1>Project "E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\HelloCpp\proj.win32\HelloAnimat.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug.win32\HelloAnimat.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         D:\project\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\cocos2dx" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\cocos2dx\include" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\cocos2dx\kazmath\include" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\cocos2dx\platform\win32" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\cocos2dx\platform\third_party\win32\OGLES" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\extensions" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\extensions\GUI\CCControlExtension" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\extensions\GUI\CCScrollView" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\scripting\lua\tolua" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\scripting\lua\lua" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\CocosDenshion\include" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\..\..\wxWidgets-2.8.12\include" /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\..\..\wxWidgets-2.8.12\include\msvc" /I..\Classes /I..\Classes\animate /I..\Classes\widget /I..\Classes\lua /I"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\scripting\lua\cocos2dx_support" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\animate\animatlayer.cpp ..\Classes\animate\fragment.cpp ..\Classes\animate\layout.cpp ..\Classes\widget\cocosfile.cpp
+         animatlayer.cpp
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\animate\animatlayer.cpp(142): warning C4003: not enough actual parameters for macro 'CCAssert'
+         Generating Code...
+         Compiling...
+         cocosfile.cpp
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosframe.h(87): warning C4482: nonstandard extension used: enum 'CoKind' used in qualified name
+     1>d:\project\microsoft visual studio 10.0\vc\include\math.h(632): warning C4005: 'M_PI' : macro redefinition
+                 e:\opensource\wxwidgets-2.8.12\include\wx\math.h(22) : see previous definition of 'M_PI'
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(41): warning C4482: nonstandard extension used: enum 'CoKind' used in qualified name
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(58): warning C4482: nonstandard extension used: enum 'CoKind' used in qualified name
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(68): warning C4482: nonstandard extension used: enum 'CoKind' used in qualified name
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(77): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(82): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(88): warning C4482: nonstandard extension used: enum 'CoKind' used in qualified name
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\widget\cocosfile.cpp(93): warning C4018: '<' : signed/unsigned mismatch
+         layout.cpp
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\animate\layout.cpp(92): warning C4003: not enough actual parameters for macro 'CCAssert'
+         fragment.cpp
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\animate\fragment.cpp(107): warning C4552: '*' : operator has no effect; expected operator with side-effect
+     1>e:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\hellocpp\classes\animate\fragment.cpp(108): warning C4552: '*' : operator has no effect; expected operator with side-effect
+         Generating Code...
+         All outputs are up-to-date.
+       Link:
+         D:\project\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\HelloAnimat.exe" /INCREMENTAL /NOLOGO /LIBPATH:"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\\" /LIBPATH:"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\..\..\wxWidgets-2.8.12\lib\vc_lib" opengl32.lib glew32.lib libcocos2d.lib liblua.lib libExtensions.lib wxmsw28d_html.lib wxmsw28d_core.lib wxbase28d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST:NO /DEBUG /PDB:"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\HelloAnimat.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\HelloAnimat.lib" /MACHINE:X86 Debug.win32\CCLuaEngine.obj
+         Debug.win32\Cocos2dxLuaLoader.obj
+         Debug.win32\LuaCocos2d.obj
+         Debug.win32\tolua_fix.obj
+         Debug.win32\animatlayer.obj
+         Debug.win32\aniutil.obj
+         Debug.win32\fragment.obj
+         Debug.win32\frameip.obj
+         Debug.win32\imagespliter.obj
+         Debug.win32\layout.obj
+         Debug.win32\luagenerator.obj
+         Debug.win32\AppDelegate.obj
+         Debug.win32\HelloWorldScene.obj
+         Debug.win32\luauserobj.obj
+         Debug.win32\tolua_fix.obj
+         Debug.win32\testluagenerator.obj
+         Debug.win32\cocosapp.obj
+         Debug.win32\cocosfile.obj
+         Debug.win32\cocosframe.obj
+         Debug.win32\cocosproject.obj
+         Debug.win32\cocossolution.obj
+         Debug.win32\cocoswindow.obj
+         "E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\libcocos2d.lib"
+         "E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\libCocosDenshion.lib"
+         HelloAnimat.vcxproj -> E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\Debug.win32\HelloAnimat.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug.win32\HelloAnimat.unsuccessfulbuild".
+         Touching "Debug.win32\HelloAnimat.lastbuildstate".
+     1>Done Building Project "E:\opensource\svn_code\cocos2d-2.0-x-2.0.3(animate)\samples\HelloCpp\proj.win32\HelloAnimat.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:12.87

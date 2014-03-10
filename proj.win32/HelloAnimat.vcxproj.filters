@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\animatlayer.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\imagespliter.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\layout.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\widget\cocosapp.cpp">
+      <Filter>Classes\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\widget\cocosfile.cpp">
+      <Filter>Classes\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\widget\cocosframe.cpp">
+      <Filter>Classes\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\widget\cocosproject.cpp">
+      <Filter>Classes\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\widget\cocossolution.cpp">
+      <Filter>Classes\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\widget\cocoswindow.cpp">
+      <Filter>Classes\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\testluagenerator.cpp">
+      <Filter>Classes\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\luagenerator.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\fragment.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\aniutil.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\animate\frameip.cpp">
+      <Filter>Classes\animate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scripting\lua\cocos2dx_support\CCLuaEngine.cpp">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scripting\lua\cocos2dx_support\Cocos2dxLuaLoader.cpp">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scripting\lua\cocos2dx_support\LuaCocos2d.cpp">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\scripting\lua\cocos2dx_support\tolua_fix.c">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua\luauserobj.cpp">
+      <Filter>Classes\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua\tolua_fix.c">
+      <Filter>Classes\lua</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\animatcommon.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\animatlayer.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\imagespliter.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\layout.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\widget\cocosapp.h">
+      <Filter>Classes\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\widget\cocosframe.h">
+      <Filter>Classes\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\widget\cocoswindow.h">
+      <Filter>Classes\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\test.h">
+      <Filter>Classes\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\luagenerator.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\fragment.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\userobj.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\aniutil.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\animate\frameip.h">
+      <Filter>Classes\animate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\scripting\lua\cocos2dx_support\CCLuaEngine.h">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\scripting\lua\cocos2dx_support\Cocos2dxLuaLoader.h">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\scripting\lua\cocos2dx_support\LuaCocos2d.h">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\scripting\lua\cocos2dx_support\tolua_fix.h">
+      <Filter>Classes\cocos2dx_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua\luauserobj.h">
+      <Filter>Classes\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua\tolua_fix.h">
+      <Filter>Classes\lua</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{f9c2e00b-1769-464c-a469-bacfcba5862b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win32">
+      <UniqueIdentifier>{307a03c7-19a1-488d-8527-35d6fd4632b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\lua">
+      <UniqueIdentifier>{b80710b1-b738-48da-8506-96b4c6640ed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\widget">
+      <UniqueIdentifier>{a1dddea5-8c94-44b6-a13e-d4e98228c24a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\animate">
+      <UniqueIdentifier>{f3121b23-6443-4139-a420-29868e5604ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\test">
+      <UniqueIdentifier>{f68f3f63-e02c-415e-bcb7-8ba9f823fd3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\cocos2dx_support">
+      <UniqueIdentifier>{a3aa0214-8290-4fd5-94d8-9a0ac50e89f2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\lua\animat.lua">
+      <Filter>Classes\lua</Filter>
+    </None>
+  </ItemGroup>
+</Project>
