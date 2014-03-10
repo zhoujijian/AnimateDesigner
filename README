@@ -5,8 +5,12 @@
 3)将win32文件夹中的CCEGLView.h/cpp替换到cocos2dx/platform/win32下，这部分为了与wxWidget整合做了一点修改；
 4)将本项目拷贝到cocos2dx目录的samples下，配置好头文件包含路径和库的链接路径，即可正常运行了。
 
+在Resources目录下的lua文件夹中存放了ejoy2d格式转化和文件序列化的lua代码。
+
 demo:
 1)打开File菜单->create，创建解决方案的lua文件yoursln；
 2)右击解决方案文件yoursln，创建工程的lua文件yourpoj；
 3)右击工程yourpoj，点击AddFileExisting，添加Resources目录下dragontest1.plist文件；
 4)双击dragontest1.plist，图块会被加载到右侧，你可以通过点击create/trans/rotate/scale/append/connect等切换到不同的模式以做不同的操作。
+
+相关的文档后面会陆续补充。
