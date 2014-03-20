@@ -26,6 +26,7 @@ public:
 	static void setframe(CCSprite *spr, const char *name);
 	static void setattr(CCSprite *spr, KeyFrameObject *ko);
 	static void layout(CCNode *parent, int linear);
+	static CCPoint poslocal(CCNode *ancestor, CCNode *node);
 };
 
 #endif

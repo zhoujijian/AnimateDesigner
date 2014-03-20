@@ -12,22 +12,7 @@ extern "C"
 #include <string>
 #include "animatcommon.h"
 
-class ILuaGenerator {
-public:
-	virtual ~ILuaGenerator() { }
-
-	virtual bool open_lua_script() { return false; }
-	virtual void close_lua_script() { }
-	virtual void read_png_path(std::vector<std::string>& png_path) { }
-	virtual void generat_png_infor(const LuaPngInfo *png_info, int png_count) { }
-	virtual void generat_frame_infor(const LuaKeySprite *key_sprite, int sprite_count, float basex, float basey) { }
-	virtual int  read_frame_infor(LuaKeySprite *key_sprite, int sprite_count, float& basex, float& basey) { return 0; }
-	virtual int  read_png_infor(LuaPngInfo *png_info, int png_count) { return NULL; }
-
-	virtual void save_generat() { }
-};
-
-class LuaGenerator : public ILuaGenerator {
+class LuaGenerator {
 private:
 	LuaGenerator() : L(NULL) {
 		init();

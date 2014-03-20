@@ -38,7 +38,7 @@ void CocosFrame::OnTreeMenuAddProject(wxCommandEvent& event) {
 }
 
 void CocosFrame::OnTreeMenuRemoveProject(wxCommandEvent& event) {
-	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 	wxTreeItemId selected = root->GetSelection();
 	if (selected.IsOk()) {
 		root->Delete(selected);
@@ -49,6 +49,6 @@ void CocosFrame::OnTreeMenuRemoveProject(wxCommandEvent& event) {
 }
 
 wxTreeItemId CocosFrame::AppendProjectItem(const string& path) {
-	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 	return AppendTreeItem(path.c_str(), CoKind::Project, root->GetRootItem());
 }

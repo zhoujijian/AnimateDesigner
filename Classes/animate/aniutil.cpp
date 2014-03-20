@@ -51,6 +51,12 @@ void AnimateUtiler::setattr(CCSprite *spr, KeyFrameObject *ko) {
 	spr->setScaleY(ko->get_scaley());
 }
 
+CCPoint AnimateUtiler::poslocal(CCNode *ancestor, CCNode *node) {
+	CCPoint world = node->getParent()->convertToWorldSpace(node->getPosition());
+	CCPoint local = ancestor->convertToNodeSpace(world);
+	return local;
+}
+
 void AnimateUtiler::layout(CCNode *parent, int linear) {
 	CCAssert(AnimateUtiler::HLR == linear || AnimateUtiler::HRL == linear ||
 			 AnimateUtiler::VTB == linear || AnimateUtiler::VBT == linear, "linear param error");

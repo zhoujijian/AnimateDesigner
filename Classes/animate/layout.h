@@ -9,10 +9,6 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-#define IMAGE_LAYER_TAGID 300
-#define BONES_LAYER_TAGID 301
-#define SIMPL_LAYER_TAGID 302
-
 #define OPER_ANIMAT_NODE_TAGID    304
 
 // ########################################

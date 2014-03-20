@@ -7,9 +7,9 @@
 using namespace std;
 using namespace cocos2d;
 
-#define MAX_SPRITE_COUNT 256
-
 class SimpleLayer;
+
+typedef void* (CCObject::*IterCallback)(CCNode*, void*);
 
 class AnimatLayer : public CCLayerColor {
 public:
@@ -26,6 +26,7 @@ public:
 
 private:
 	static AnimatLayer *aniinst;
+	static int sprid;
 
 public:
 	AnimatLayer();
@@ -45,8 +46,11 @@ public:
 
 	int getcur_state() { return cur_state; }
 	void setcur_state(int next);
+	bool isdirty() { return dirty; }
+	void nodirty() { dirty = false; }
 
 public:
+	void select(int tagid);
 	void setkey_frame(int index, bool iskey);
 	void plykey_frame();
 	void frame_selected(int index);
@@ -55,7 +59,11 @@ public:
 private:
 	CCSprite* testarea(CCNode *root, bool isbone, const CCPoint& poi);
 	CCSprite* testarea(CCNode *root, const CCPoint& poi);
+	void* test(CCNode *root, CCObject *caller, IterCallback callback, void *arg, bool isfirst = true);
+	void* findspr(CCNode *node, void *arg);
 
+	void tokey_frame(int index, bool iskey);
+	void setdirty(bool dir) { dirty = dir; }
 	void set_curspr(CCSprite *spr);
 	void rotate_a_b(const CCPoint& poia, const CCPoint& poib);
 	void playani(CCSprite *spr);
@@ -77,15 +85,15 @@ private:
 
 	void onclear_poser();
 
+private:
 	CCSprite *sprcur, *sprold;
 	CCSprite *boneroot;
 	CCPoint posstart;
 	float angstart;
-	queue<CCSprite*> Q;	
+	queue<CCSprite*> Q;
 
-private:
-	SimpleLayer *simple_layer;
 	int cur_state;
+	bool dirty;
 };
 
 #endif

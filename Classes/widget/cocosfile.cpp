@@ -11,7 +11,7 @@ void CocosFrame::OnTreeMenuAddFileExisting(wxCommandEvent& event) {
 		if (!wxFile::Exists(dialog.GetPath())) {
 			wxLogMessage("file %s you opened not exist!", dialog.GetPath());
 		} else {
-			wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+			wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 			wxTreeItemId parent = root->GetSelection();
 			if (parent.IsOk()) {
 				wxTreeItemId fileid = AppendFileItem(parent, dialog.GetPath().c_str());
@@ -24,7 +24,7 @@ void CocosFrame::OnTreeMenuAddFileExisting(wxCommandEvent& event) {
 void CocosFrame::OnTreeMenuNewAnimate(wxCommandEvent& event) {
 	CreateAnimateDialog dialog(NULL, wxID_ANY, "create animate");
 	if (dialog.ShowModal() == wxID_OK) {
-			wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+			wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 			wxTreeItemId parent = root->GetSelection();
 			if (parent.IsOk()) {
 				wxTreeItemId fileid = AppendFileItem(parent, dialog.GetPath().c_str());
@@ -34,7 +34,7 @@ void CocosFrame::OnTreeMenuNewAnimate(wxCommandEvent& event) {
 }
 
 void CocosFrame::OnTreeMenuRemoveFile(wxCommandEvent& event) {
-	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 	wxTreeItemId selected = root->GetSelection();
 	if (selected.IsOk()) {
 		CocosTreeItemData *data = (CocosTreeItemData*)root->GetItemData(selected);
@@ -52,7 +52,7 @@ void CocosFrame::OnTreeMenuRemoveFile(wxCommandEvent& event) {
 }
 
 void CocosFrame::OnTreeMenuFileDoubleClicked(wxMouseEvent& event) {
-	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 	wxTreeItemId selected = root->GetSelection();
 	CocosTreeItemData *data = selected.IsOk() ? (CocosTreeItemData*)root->GetItemData(selected) : NULL;
 	if (data && data->GetKind() == CoKind::Filer) {
@@ -72,7 +72,7 @@ wxTreeItemId CocosFrame::AppendFileItem(wxTreeItemId parent, const string& path)
 void CocosFrame::SaveFileConfig(wxTreeItemId fileid, const char *cmd) {
 	wxTreeItemId pojid = FindParentProject(fileid);
 	if (pojid.IsOk()) {
-		wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+		wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 		CocosTreeItemData *pojdata = (CocosTreeItemData*)root->GetItemData(pojid);
 		for (int i = 0; i < solution->folders.size(); ++ i) {
 			CoConfig *poj = solution->folders.at(i);

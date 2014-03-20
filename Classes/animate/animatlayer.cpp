@@ -6,8 +6,10 @@
 
 #define FRAME_SPRITE_TAGID 200
 #define BONES_ROOTER_TAGID 6000
+#define ZORDER_TOPONE      1000
 
 AnimatLayer* AnimatLayer::aniinst = NULL;
+int AnimatLayer::sprid = 10000;
 
 void AnimatLayer::onbegin_create(const CCPoint& poi) {
 	const char *rs = MoveLayer::sharedMoveLayer()->getcur_rect();
@@ -25,6 +27,7 @@ void AnimatLayer::onbegin_create(const CCPoint& poi) {
 	addChild(sprite);
 
 	set_curspr(sprite);
+	tokey_frame(0, true);
 }
 
 void AnimatLayer::onbegin_rotate(const CCPoint& poi) {
@@ -94,6 +97,7 @@ void AnimatLayer::onbegin_poser(const CCPoint& poigl) {
 		spr->setPosition(sprcur->convertToNodeSpace(poigl));
 
 		sprcur->addChild(spr);
+		setdirty(true);
 	}
 }
 
@@ -119,6 +123,7 @@ void AnimatLayer::onbegin_connect(const CCPoint& poigl) {
 		sprcur->addChild(spr);
 
 		set_curspr(spr);
+		setdirty(true);
 	}
 }
 
@@ -132,7 +137,8 @@ void AnimatLayer::rotate_a_b(const CCPoint& poia, const CCPoint& poib) {
 	sprcur->setRotation(angle);
 }
 
-AnimatLayer::AnimatLayer() : cur_state(max_state), boneroot(NULL), sprold(NULL), sprcur(NULL) {
+AnimatLayer::AnimatLayer()
+	: dirty(false), cur_state(max_state), boneroot(NULL), sprold(NULL), sprcur(NULL) {
 }
 
 AnimatLayer::~AnimatLayer() {
@@ -148,11 +154,9 @@ AnimatLayer* AnimatLayer::create(const ccColor4B& color, GLfloat width, GLfloat 
 		AnimatLayer *layer = new AnimatLayer();
 		layer->autorelease();
 		if (layer->initWithColor(color, width, height)) {
-			layer->simple_layer = SimpleLayer::create();
-			layer->simple_layer->setTag(SIMPL_LAYER_TAGID);
-			layer->simple_layer->setContentSize(CCSizeMake(width, height));
-
-			layer->addChild(layer->simple_layer);
+			SimpleLayer *simple = SimpleLayer::create();
+			simple->setContentSize(CCSizeMake(width, height));
+			layer->addChild(simple, ZORDER_TOPONE);
 
 			CCSize size = layer->getContentSize();
 			layer->boneroot = CCSprite::create("ball.png");
@@ -174,7 +178,7 @@ void AnimatLayer::set_curspr(CCSprite *spr) {
 	if (sprcur != spr) {
 		if (NULL == sprcur) {
 			back = CCLayerColor::create(ccc4(100, 100, 100, 100));
-			back->setTag(SELET_SPRITE_TAGID);			
+			back->setTag(SELET_SPRITE_TAGID);
 		} else {
 			back = (CCLayerColor*)sprcur->getChildByTag(SELET_SPRITE_TAGID);
 			CCAssert(back, "selected sprite no back");
@@ -249,11 +253,24 @@ bool AnimatLayer::iskey_frame(int index) {
 	return false;
 }
 
+void AnimatLayer::select(int tagid) {
+	void *r = test(this, this, (IterCallback)(&AnimatLayer::findspr), &tagid);
+	if (r != NULL) {
+		CCSprite *spr = (CCSprite*)r;
+		set_curspr(spr);
+	}
+}
+
 void AnimatLayer::setkey_frame(int index, bool iskey) {
+	tokey_frame(index, iskey);
+}
+
+void AnimatLayer::tokey_frame(int index, bool iskey) {
 	if (sprcur) {
 		AnimateObject *anio = dynamic_cast<AnimateObject*>(sprcur->getUserObject());
 		CCAssert(anio, "sprite selected not [bone|animate]");
 		anio->setkey_frame(sprcur, index, iskey);
+		setdirty(true);
 
 		anio->prikey_frame();
 	}
@@ -307,7 +324,7 @@ void AnimatLayer::drawbone() {
 
 	while(Q.size() > 0) {
 		CCSprite *spr = Q.front();
-		CCPoint src = convertToNodeSpace(spr->getParent()->convertToWorldSpace(spr->getPosition()));
+		CCPoint src = AnimateUtiler::poslocal(this, spr);
 		ccDrawColor4B(ccRED.r, ccRED.g, ccRED.b, 255);
 		ccDrawCircle(src, spr->getContentSize().width * 0.5, 0, 10, false);
 				
@@ -316,10 +333,14 @@ void AnimatLayer::drawbone() {
 			CCObject *o;
 			CCARRAY_FOREACH(array, o) {
 				CCSprite *c = dynamic_cast<CCSprite*>(o);
-				if (c && isspr_bone(c)) {
-					Q.push(c);
-
-					CCPoint dst = convertToNodeSpace(c->getParent()->convertToWorldSpace(c->getPosition()));
+				if (c) {
+					if (isspr_bone(c)) {
+						Q.push(c);
+						ccDrawColor4B(ccYELLOW.r, ccYELLOW.g, ccYELLOW.b, 255);
+					} else {
+						ccDrawColor4B(ccRED.r, ccRED.g, ccRED.b, 255);
+					}
+					CCPoint dst = AnimateUtiler::poslocal(this, c);
 					ccDrawLine(src, dst);
 				}
 			}
@@ -355,6 +376,35 @@ CCSprite* AnimatLayer::testarea(CCNode *root, bool isbone, const CCPoint& poi) {
 		CCSprite *sprite = testarea(node, isbone, poi);
 		if (sprite) { return sprite; }
 	}
+	return NULL;
+}
+
+void* AnimatLayer::test(CCNode *root, CCObject *caller, IterCallback callback, void *arg, bool isfirst) {
+	if (isfirst) {
+		void *r = (caller->*callback)(root, arg);
+		if (r) { return r; }
+	}
+		
+	CCArray *ac = root->getChildren();
+	if (ac) {
+		CCObject *o;
+		CCARRAY_FOREACH(ac, o) {
+			CCNode *node = (CCNode*)o;
+			void *r = test(node, caller, callback, arg, isfirst);
+			if (r) { return r; }
+		}
+	}
+
+	if (!isfirst) {
+		void *r = (caller->*callback)(root, arg);
+		return r;
+	}
+	return NULL;
+}
+
+void* AnimatLayer::findspr(CCNode *node, void *arg) {
+	int tagid = *((int*)arg);
+	if (node->getTag() == tagid) { return node; }
 	return NULL;
 }
 

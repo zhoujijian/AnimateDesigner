@@ -12,6 +12,8 @@
 
 #define APP_WINDOW_WIDTH        1000
 #define APP_WINDOW_HEIGH        700
+// #define APP_WINDOW_WIDTH        200
+// #define APP_WINDOW_HEIGH        500
 
 class CocosWindow : public wxControl {
 public:

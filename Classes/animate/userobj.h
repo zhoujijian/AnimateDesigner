@@ -71,7 +71,8 @@ private:
 
 class AnimateObject : public CCObject {
 public:
-	AnimateObject(bool bone) : is_bone(bone), seq(NULL), curframe(NULL), curtext(NULL) {
+	AnimateObject(bool bone)
+		: is_bone(bone), seq(NULL), export(NULL), curframe(NULL), curtext(NULL) {
 
 	}
 
@@ -79,6 +80,7 @@ public:
 		CC_SAFE_RELEASE(seq);
 		CC_SAFE_RELEASE(curframe);
 		CC_SAFE_RELEASE(curtext);
+		CC_SAFE_RELEASE(export);
 	}
 
 public:
@@ -89,6 +91,15 @@ public:
 	void setcur_frame(const char *frame, const char *text);
 	void setkey_frame(CCSprite *spr, int index, bool iskey);
 	KeyFrameObject* getkey_frame(int index);
+
+	const char* getexport() { return export ? export->getCString() : NULL; }
+	void setexport(const char *name) {
+		CCAssert(name, "export name nil");
+		CC_SAFE_RELEASE(export);
+		export = CCString::create(name);
+		CC_SAFE_RETAIN(export);
+	}
+
 	void prikey_frame();
 	void plykey_frame(CCSprite *spr);
 
@@ -97,7 +108,9 @@ public:
 private:
 	bool is_bone;
 	CCArray *seq;
-	CCString *curframe, *curtext;
+	CCString *curframe;
+	CCString *curtext;
+	CCString *export;
 
 	int index_call_back;
 };

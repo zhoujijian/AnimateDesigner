@@ -34,7 +34,7 @@ void CocosFrame::OnFileMenuOpenSolution(wxCommandEvent& event) {
 
 wxTreeItemId CocosFrame::AppendSolutionItem(const string& path) {
 	string alias = path.substr(path.find_last_of("\\") + 1);
-	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+	wxTreeCtrl *root = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 	root->DeleteAllItems();
 	root->AddRoot(_T(alias.c_str()));
 
@@ -48,7 +48,7 @@ wxTreeItemId CocosFrame::AppendSolutionItem(const string& path) {
 
 void CocosFrame::OnSolutionRightClicked(wxTreeEvent& event) {
 	wxTreeItemId itemid = event.GetItem();
-	wxTreeCtrl *solTreeCtrl = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREE_CTRL);
+	wxTreeCtrl *solTreeCtrl = (wxTreeCtrl*)FindWindow(ID_SOLUTION_TREECTRL);
 	CocosTreeItemData *data = itemid.IsOk() ? (CocosTreeItemData*)solTreeCtrl->GetItemData(itemid) : NULL;
 	if (!data) {
 		wxLogMessage("Data of tree item clicked is NULL!");

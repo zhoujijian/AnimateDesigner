@@ -6,15 +6,18 @@
 #include "wx/wx.h"
 #include "wx/treectrl.h"
 #include "animatcommon.h"
+#include "cocos2d.h"
 
 using namespace std;
+using namespace cocos2d;
 
 #define ID_SOLUTION_FILE_NAME 100
 #define ID_SOLUTION_BROWSEDIR 101
 
-#define ID_SOLUTION_TREE_CTRL    102
+#define ID_SOLUTION_TREECTRL     102
 #define ID_SOL_ADD_PROJECT_NEW   103
 #define ID_SOL_ADD_PROJECT_EXIST 104
+#define ID_ANIMATE_TREECTRL      105
 
 #define ID_POJ_ADD_FILTER      126
 #define ID_POJ_ADD_ANIMATE_NEW 127
@@ -25,6 +28,7 @@ using namespace std;
 #define ID_FILE_RENAME_FILE 142
 
 #define ID_COCOS_WINDOW 153
+#define ID_REFRESH_ANIMATE_TIMER 154
 
 class CocosTreeItemData;
 
@@ -51,9 +55,12 @@ public:
 	void OnTreeMenuFileDoubleClicked(wxMouseEvent& event);
 
 	void OnCocosFrameClose(wxCloseEvent& event);
+	void OnTimer(wxTimerEvent& evt);
 
 private:
 	void OpenSolution(const char *path);
+	void GenAnimTree(wxTreeCtrl *root, const wxTreeItemId& parent, CCNode *cur);
+	void TestAnimate(wxTreeCtrl *root, const wxTreeItemId& parent, CCNode *cur);
 
 private:
 	bool LoadConfig(const char *path);
@@ -77,6 +84,7 @@ private:
 
 private:
 	CoConfig *solution;
+	wxTimer anitimer;
 
 private:
 	DECLARE_EVENT_TABLE()
@@ -96,6 +104,21 @@ private:
 		CoKind kind;
 		string path;
 		string alias;
+};
+
+class AnimTreeItemData : public wxTreeItemData {
+public:
+	AnimTreeItemData(bool bone, int id) : isbone(bone), tagid(id) { }
+
+	bool IsBone() const { return isbone; }
+	int GetTagid() const { return tagid; }
+	const char* GetName() const { return name.c_str(); }
+	void SetName(const char *nc) { name = string(nc); }
+
+private:
+	int tagid;
+	string name;
+	bool isbone;
 };
 
 class CreateSolutionDialog : public wxDialog {
